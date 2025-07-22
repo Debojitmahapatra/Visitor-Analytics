@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Visitor Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Visitor Analytics Dashboard</h1>
+  <div id="status">WebSocket: <span id="ws-status">Connecting...</span></div>
+  <div id="dashboards">Connected Dashboards: <span id="dashboard-count">0</span></div>
+  <div id="visitor-count">Active Visitors: <span id="active-visitors">0</span></div>
+  <div id="total-count">Total Visitors today: <span id="total-visitors">0</span></div>
+  <div id="visitor-feed">
+    <h3>Live Visitor Feed</h3>
+    <ul id="visitor-events"></ul>
+  </div>
+  <div id="filters">
+  <h3>Filter Events</h3>
+  <label>Country:
+    <input type="text" id="filter-country" placeholder="e.g. India">
+  </label>
+  <label>Page:
+    <input type="text" id="filter-page" placeholder="e.g. /home">
+  </label>
+  <button onclick="applyFilters()">Apply Filter</button>
+  <button onclick="resetFilter()">Reset Filter</button>
+</div>
+<div id="filtered-structure">
+  <h3>Structured Filter Result</h3>
+  <div id="structured-output" class="structured-list"></div>
+</div>
+
+<div id="sessions">
+  <h3>Active Sessions</h3>
+  <ul id="session-list"></ul>
+</div>
+<div id="messaging">
+  <h3>Send Message</h3>
+  <input type="text" id="msg-input" placeholder="Type a message..." />
+  <input type="text" id="msg-session" placeholder="Session ID (optional)" />
+  <select id="msg-level">
+    <option value="info">Info</option>
+    <option value="warning">Warning</option>
+    <option value="milestone">Milestone</option>
+  </select>
+  <button onclick="sendMessage()">Send</button>
+
+  <div id="alert-feed">
+    <h4>Alerts</h4>
+    <ul id="alerts-list"></ul>
+  </div>
+</div>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
